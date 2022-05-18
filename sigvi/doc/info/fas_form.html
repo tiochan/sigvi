@@ -1,0 +1,118 @@
+<h1>Final Absolute Severity (FAS) form</h1>
+<p class="info">
+This form is used to define the <a href="show_info.php?info_page=fas.html">FAS</a> functions to use in order to determine the impact of the vulnerability on each service.<br>
+</p>
+<p class="info">
+By default, one FAS is enabled for all groups (those without group), but each group can define their own.<br>
+<b>Only one can be enabled for each group</b>.
+</p>
+<p class="info">
+The order to select the FAS function is:<br>
+<li>First: if the group owner of the server has one FAS enable, will use it</li>
+<li>Second: else, if there is one without group enabled (generic), will use it</li>
+<li>Last: else, will use the generic FAS (<?php echo DEFAULT_FAS; ?>)</li>
+</p>
+<h2>Variables</h2>
+<p class="info">What you can use to define the function:</p>
+
+<table class="datawindow_external" align="left">
+<tr><td>
+<table class="datawindow_rows" cellspacing="0">
+	<th class="datawindow_rows">ACRONYM</th><th class="datawindow_rows">Description</th><th class="datawindow_rows">Values</th>
+	<tr>
+		<td class="datawindow_cell">CS</td>
+		<td class="datawindow_cell">Criticity Service</td>
+		<td class="datawindow_cell"><li>0: not critical</li><li>1: critical</li></td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">FS</td>
+		<td class="datawindow_cell">Filtered Service</td>
+		<td class="datawindow_cell"><li>0: not filtered</li><li>1: filtered</li></td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">BS</td>
+		<td class="datawindow_cell">Base Score</td>
+		<td class="datawindow_cell">
+			<li>(0.6*Impact + 0.4*Exploitability - 1.5)*f(Impact)
+		</td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">Imp</td>
+		<td class="datawindow_cell">Impact</td>
+		<td class="datawindow_cell">
+			<li>10.41*(1 - (1-ConfImpact)*(1-IntegImpact)*(1-AvailImpact))
+		</td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">Exp</td>
+		<td class="datawindow_cell">Exploitability</td>
+		<td class="datawindow_cell">
+			<li>20*AccessComplexity*Authentication*AccessVector
+		</td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">fImp</td>
+		<td class="datawindow_cell">f(Impact)</td>
+		<td class="datawindow_cell">
+			<li>0     if Impact=0
+			<li>1.176 otherwise
+		</td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">AC</td>
+		<td class="datawindow_cell">Access Complexity</td>
+		<td class="datawindow_cell">
+			<li>high: 0.35</li>
+			<li>medium: 0.61</li>
+			<li>low: 0.71</li>
+		</td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">Au</td>
+		<td class="datawindow_cell">Authentication</td>
+		<td class="datawindow_cell">
+			<li>Requires no authentication: 0.704</li>
+			<li>Requires single instance of authentication: 0.56</li>
+			<li>Requires multiple instances of authentication: 0.45</li>
+		</td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">AV</td>
+		<td class="datawindow_cell">Access Vector</td>
+		<td class="datawindow_cell">
+			<li>Requires local access: 0.395</li>
+			<li>Local Network accessible: 0.646</li>
+			<li>Network accessible: 1</li>
+		</td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">C</td>
+		<td class="datawindow_cell">Confidentiality Impact</td>
+		<td class="datawindow_cell">
+			<li>none: 0</li>
+			<li>partial: 0.275</li>
+			<li>complete: 0.660</li>
+		</td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">I</td>
+		<td class="datawindow_cell">Inegrity Impact</td>
+		<td class="datawindow_cell">
+			<li>none: 0</li>
+			<li>partial: 0.275</li>
+			<li>complete: 0.660</li>
+		</td>
+	</tr>
+	<tr>
+		<td class="datawindow_cell">A</td>
+		<td class="datawindow_cell">Availability Impact</td>
+		<td class="datawindow_cell">
+			<li>none: 0</li>
+			<li>partial: 0.275</li>
+			<li>complete: 0.660</li>
+		</td>
+	</tr>
+</table>
+</table>
+
+</p>
