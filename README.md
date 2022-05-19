@@ -46,6 +46,17 @@ managing vulnerabilities.
 
 # INSTALLATION PROCESS
 
+You can use either the docker option, or the ccompletely do it manually.
+
+## Docker
+
+To create an instance of SIGVI, just enter in the root directory:
+
+```
+$ sudo ./scripts/docker-build-image.sh
+```
+
+## Manually install into Apache
 Lets assume that your web home is /var/www. Else change for your needs.
 
 1. Checking access and moving files
