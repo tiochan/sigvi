@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# rm sifit.tgz
-# tar czvf sifit.tgz ../../../sifit
+# rm sigvi.tgz
+# tar czvf sigvi.tgz ../../../sigvi
 
 if [ $# -lt 1 ]; then
 	echo "Missing parameter DB_HOST"

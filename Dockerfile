@@ -15,11 +15,11 @@ ADD src /var/www/html/
 EXPOSE 80
 
 # Configure cron
-COPY src/doc/sifit.cron.d /etc/cron.d/sifit
-RUN chmod 0644 /etc/cron.d/sifit
-RUN touch /tmp/output-sifit.txt
-RUN chown www-data /tmp/output-sifit.txt
-RUN crontab /etc/cron.d/sifit
+COPY src/doc/sigvi.cron.d /etc/cron.d/sigvi
+RUN chmod 0644 /etc/cron.d/sigvi
+RUN touch /tmp/output-sigvi.txt
+RUN chown www-data /tmp/output-sigvi.txt
+RUN crontab /etc/cron.d/sigvi
 
 ##
 #CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
@@ -29,7 +29,7 @@ CMD cron && /usr/sbin/apache2ctl -D FOREGROUND
 ENV MYSQL_ROOT_PASSWORD=root
 ENV MYSQL_ROOT_USER=root
 
-RUN sed -i 's#"HOME","/sifit"#"HOME",""#g' /var/www/html/conf/app.conf.php
+RUN sed -i 's#"HOME","/sigvi"#"HOME",""#g' /var/www/html/conf/app.conf.php
 RUN sed -i "s#\"DBServer\", \"localhost\"#\"DBServer\", \"$DB_HOST\"#g" /var/www/html/conf/app.conf.php
 RUN sed -i "s#DEVELOPMENT\", true#DEVELOPMENT\", false#g" /var/www/html/conf/app.conf.php
 RUN sed -i "s#DEBUG\", true#DEBUG\", false#g" /var/www/html/conf/app.conf.php
