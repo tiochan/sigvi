@@ -1,3 +1,26 @@
+# SIGVI
+
+SIGVI stands for System Intelligent Management of Computer Vulnerabilities. It is a tool used to detect and manage vulnerabilities in software systems.
+
+SIGVI is a Web application what consists of a set of programmed PHP + HTML + Javascript + CSS scripts that implement the logic of the application and a relational database where data is stored.
+
+Some scripts run as batch processes (usually at night) to perform tasks that require no human interaction, such as loads from the sources of vulnerabilities, checks vulnerabilities in our systems, etc. The rest of the scripts are
+programmed inside the application site.
+
+This application is targeted to the system administrator in his daily work of detection vulnerabilities on servers.
+
+To simplify the tasks and operations there are several user profiles with different permissions.
+Three user profiles:
+
+- SIGVI Manager/Administrator: It is the general manager of the application, whose role will be to
+perform general administration tasks on the application.
+
+- Groups Manager/Administrator: It is the figure that manages data from a group, usually the users who
+belong to it.
+
+- Equipment Manager/Administrator: It is the user who ultimately will use the specific functions for
+managing vulnerabilities.
+
 # System requirements
 
 - WEB Server with support for PHP5+ scripts
@@ -138,9 +161,7 @@ Lets assume that your web home is /var/www. Else change for your needs.
 
 Thank you for your interest, I hope you enjoy it.
 
-Sebastián Gómez. 
-
-
+Sebastián Gómez.
 
 # ABOUT UPGRADES
 
@@ -150,11 +171,15 @@ for upgrade to future versions.
 
 I'm sorry, but If you have data from previous versions, you must migrate the 
 data manually:
+
 - rename your current database
 - install the new version
 - try to do a migration process like:
-  > truncate sigvi.<table>;
-  > insert into sigvi.<table> select * from sigvi_old.<table>
+
+  ```
+  truncate sigvi.<table>;
+  insert into sigvi.<table> select * from sigvi_old.<table>
   for each table like users, groups, servers, server_products, vulnerabilities..
+  ```
 
 A lot of changes on database structure have been done.
